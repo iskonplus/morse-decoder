@@ -40,6 +40,21 @@ const MORSE_TABLE = {
 function decode(expr) {
     // write your solution here
 }
+function decode(expr) {
+    let decodedExpr = '',
+        lengthExpr = expr.length;
+
+    for (let i = 0; i < lengthExpr; i += 10) {
+        let letter = expr.slice(i, i + 10)
+            .replace(/00/g, '')
+            .replace(/10/g, '.')
+            .replace(/11/g, '-');
+
+        decodedExpr += MORSE_TABLE[letter] || ' ';
+    }
+
+    return decodedExpr;
+}
 
 module.exports = {
     decode
